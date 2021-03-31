@@ -5,6 +5,7 @@ import android.util.Log
 import android.widget.Toast
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.GoogleAuthProvider
@@ -59,5 +60,10 @@ class LoginViewModel : ViewModel() {
                     Log.w("Test Google Auth", "signInWithCredential:failure", task.exception)
                 }
             }
+    }
+
+    fun firebaseSignOut(googleSignInClient: GoogleSignInClient) {
+        Firebase.auth.signOut()
+        googleSignInClient.signOut()
     }
 }

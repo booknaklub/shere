@@ -8,12 +8,15 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.widget.AppCompatButton
 import com.example.myapplication.R
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.android.gms.common.SignInButton
 import com.google.android.gms.common.api.ApiException
+import com.google.firebase.auth.ktx.auth
+import com.google.firebase.ktx.Firebase
 
 class LoginFragment : Fragment() {
 
@@ -55,6 +58,18 @@ class LoginFragment : Fragment() {
         googleSignInClient = GoogleSignIn.getClient(requireActivity(), gso)
         mView.findViewById<SignInButton>(R.id.sign_in_google_button).setOnClickListener {
             signIn()
+        }
+
+        mView.findViewById<AppCompatButton>(R.id.sign_out_button).setOnClickListener {
+            viewModel.firebaseSignOut(googleSignInClient)
+        }
+
+        Firebase.auth.addAuthStateListener {
+            it.currentUser?.let{ firebaseUser ->
+                Log.d("Login state",firebaseUser.email ?: "there is no email but logied")
+            } ?: run {
+                Log.d("Login state","there are no user")
+            }
         }
     }
     private fun signIn() {
