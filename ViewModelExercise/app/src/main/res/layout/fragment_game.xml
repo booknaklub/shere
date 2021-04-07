@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".GameFragment">
+
+
+    <TextView
+        android:id="@+id/str_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:text="@string/str"
+        android:textColor="@color/theme"
+        android:textSize="30dp"
+        app:layout_constraintBottom_toBottomOf="parent" />
+
+    <TextView
+        android:id="@+id/score"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/score"
+        android:textColor="@color/score"
+        android:layout_below="@+id/str_text"
+        android:layout_centerHorizontal="true"
+        android:textSize="30dp" />
+
+
+    <Button
+        android:id="@+id/bt_inclrement"
+        android:textAllCaps="false"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/text_increment"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentBottom="true"
+>
+
+    </Button>
+    <Button
+        android:id="@+id/bt_end_game"
+        android:textAllCaps="false"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/text_end_game"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true">
+
+    </Button>
+
+
+
+
+</RelativeLayout>
